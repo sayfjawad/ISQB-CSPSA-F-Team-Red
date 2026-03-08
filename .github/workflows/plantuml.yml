@@ -12,19 +12,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install PlantUML
+      - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt install -y plantuml graphviz
+          sudo apt install -y graphviz
+          wget https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar
 
       - name: Render diagrams
         run: |
           for file in $(find docs -name "*.puml"); do
             echo "Rendering $file"
-            plantuml -tpng "$file" || echo "Failed: $file"
+            java -jar plantuml.jar -tpng "$file"
           done
 
-      - name: Commit generated diagrams
+      - name: Commit diagrams
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
