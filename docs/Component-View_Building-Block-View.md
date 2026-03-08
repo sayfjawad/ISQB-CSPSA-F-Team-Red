@@ -7,6 +7,7 @@ The building block view decomposes the system into components and their dependen
 slides-day-2
 
 PlantUML
+![Architecture](Component-View_Building-Block-View.png)
 ```plantuml
 @startuml
 skinparam componentStyle rectangle

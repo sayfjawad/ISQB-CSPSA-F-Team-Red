@@ -9,6 +9,8 @@ slides-day-2
 Example scenario: Student starts a lesson
 
 PlantUML
+![Architecture](Runtime-View_Sequence-Diagram.png)
+
 ```plantuml
 @startuml
 actor Student

@@ -6,6 +6,8 @@ A context view shows the system scope and external interfaces.
 slides-day-2
 
 PlantUML
+![Architecture](Context-View_System-Context.png)
+
 ```plantuml
 @startuml
 skinparam componentStyle rectangle
