@@ -1,0 +1,25 @@
+@startuml
+skinparam componentStyle rectangle
+
+actor Student
+actor Teacher
+actor Admin
+actor Author
+
+component "E-learning System" as ELS
+component "IAM System" as IAM
+component "CMS (Content Management System)" as CMS
+component "School System / LMS" as LMS
+
+Student --> ELS : follow lessons\nsubmit assessments
+Teacher --> ELS : monitor progress\nmanage courses
+Admin --> ELS : manage users\nmanage groups
+Author --> CMS : create learning content
+
+CMS --> ELS : publish course content
+ELS --> IAM : authenticate users
+IAM --> ELS : provide identity/token
+
+LMS --> ELS : open course
+ELS --> LMS : progress updates
+@enduml
