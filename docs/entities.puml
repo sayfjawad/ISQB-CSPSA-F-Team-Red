@@ -1,0 +1,96 @@
+@startuml
+' Entity Relationship Diagram for eLearning Platform
+
+entity Course {
+  +course_id : UUID
+  --
+  title : string
+  subject : string
+  education_level : string
+  description : text
+}
+
+entity Module {
+  +module_id : UUID
+  --
+  title : string
+  order_index : int
+}
+
+entity Lesson {
+  +lesson_id : UUID
+  --
+  title : string
+  order_index : int
+  status : string
+}
+
+entity Content {
+  +content_id : UUID
+  --
+  type : string
+  body : text
+  order_index : int
+}
+
+entity Exercise {
+  +exercise_id : UUID
+  --
+  type : string
+  question_text : text
+  order_index : int
+}
+
+entity AnswerOption {
+  +answer_id : UUID
+  --
+  text : string
+  is_correct : boolean
+}
+
+entity Assessment {
+  +assessment_id : UUID
+  --
+  title : string
+  scheduled_start : datetime
+  scheduled_end : datetime
+}
+
+entity User {
+  +user_id : UUID
+  --
+  name : string
+  email : string
+  role : string
+}
+
+entity Group {
+  +group_id : UUID
+  --
+  name : string
+}
+
+entity StudentProgress {
+  +progress_id : UUID
+  --
+  status : string
+  score : int
+  completed_at : datetime
+}
+
+' Relationships
+
+Course ||--o{ Module
+Module ||--o{ Lesson
+Lesson ||--o{ Content
+Lesson ||--o{ Exercise
+Exercise ||--o{ AnswerOption
+
+Course ||--o{ Assessment
+
+User ||--o{ Group : teaches
+Group ||--o{ User : students
+
+Lesson ||--o{ StudentProgress
+User ||--o{ StudentProgress
+@enduml
